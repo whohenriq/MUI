@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@/components/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ModeSwitch } from "@/components/mode-switch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -31,7 +36,13 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        {children}
+        <InitColorSchemeScript attribute="class" />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <ModeSwitch />
+
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
