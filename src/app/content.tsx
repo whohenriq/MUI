@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Image from "next/image";
 import {
   Button,
   Typography,
@@ -32,7 +32,6 @@ export function Content() {
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
-      bgcolor="#f5f5f5"
     >
       <MusicCard
         music={music}
@@ -43,9 +42,7 @@ export function Content() {
       <Dialog
         open={open}
         onClose={handleCloseModal}
-        PaperProps={{
-          sx: { borderRadius: 3, p: 2, minWidth: 350 },
-        }}
+        sx={{ borderRadius: 3, p: 2, minWidth: 350 }}
       >
         <DialogTitle>
           {music.title} - {music.artist}
@@ -75,12 +72,14 @@ export function Content() {
               variant="contained"
               color="success"
               startIcon={
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
-                  alt="Spotify"
-                  width={20}
-                  height={20}
-                />
+                <>
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                    alt="Spotify"
+                    width={20}
+                    height={20}
+                  />
+                </>
               }
             >
               Ouvir no Spotify
