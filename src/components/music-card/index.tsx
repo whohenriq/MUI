@@ -1,4 +1,6 @@
 import { Music } from "@/types/music";
+import Icon from "@mui/material/Icon";
+
 import {
   Box,
   Button,
@@ -26,12 +28,13 @@ export function MusicCard({ music, onGenerate, onOpenModal }: MusicCardProps) {
       <CardContent>
         <Typography gutterBottom variant="h5" fontWeight={600}>
           {music.title}
+          <Icon>music_note</Icon>
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" fontWeight={400}>
           🎤 {music.artist}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Álbum: {music.album}
+          Álbum: {music.album} <Icon>lyrics</Icon>
         </Typography>
       </CardContent>
       <Box display="flex" justifyContent="center" gap={2} pb={2}>
